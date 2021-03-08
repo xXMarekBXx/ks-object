@@ -21,10 +21,4 @@ public:
 	string pobierzHaslo();
 };
 
-
-
-
-
-
-
 #endif
