@@ -4,9 +4,9 @@
 #include <fstream>
 #include <sstream>
 #include "ksiazkaAdresowa.h"
+#include "plikZUzytkownikami.h"
 
 using namespace std;
-
 
 void KsiazkaAdresowa::rejestracjaUzytkownika() {
 	uzytkownikMenager.rejestracjaUzytkownika();

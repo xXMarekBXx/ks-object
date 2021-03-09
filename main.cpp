@@ -75,8 +75,9 @@ char wybierzOpcjeZMenuUzytkownika();
 
 int main()
 {
-	KsiazkaAdresowa ksiazkaAdresowa;
-	ksiazkaAdresowa.wczytajUzytkownikowZPliku();
+	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
+	//ksiazkaAdresowa.wczytajUzytkownikowZPliku();
+	ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 	ksiazkaAdresowa.rejestracjaUzytkownika();
 	ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 

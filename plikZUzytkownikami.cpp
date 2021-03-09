@@ -8,11 +8,6 @@
 
 using namespace std;
 
-PlikZUzytkownikami::PlikZUzytkownikami() {
-
-	nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
-}
-
 bool PlikZUzytkownikami::czyPlikJestPusty()
 {
 	plikTekstowy.seekg(0, ios::end);
@@ -55,12 +50,12 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 	return liniaZDanymiUzytkownika;
 }
 
-void PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
+vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
 
 	Uzytkownik uzytkownik;
+	vector <Uzytkownik> uzytkownicy;
 	string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-
-	fstream plikTekstowy;
+		
 	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
 
 	if (plikTekstowy.good() == true)
@@ -70,9 +65,9 @@ void PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
 			uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 			uzytkownicy.push_back(uzytkownik);
 		}
-
-	}
-	plikTekstowy.close();
+		plikTekstowy.close();
+	}	
+	return uzytkownicy;
 }
 
 Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
@@ -94,13 +89,13 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
 			switch (numerPojedynczejDanejUzytkownika)
 			{
 			case 1:
-				uzytkownik.pobierzId = atoi(pojedynczaDanaUzytkownika.c_str());
+				uzytkownik.ustawId(atoi(pojedynczaDanaUzytkownika.c_str()));
 				break;
 			case 2:
-				uzytkownik.ustawLogin = pojedynczaDanaUzytkownika;
+				uzytkownik.ustawLogin(pojedynczaDanaUzytkownika);
 				break;
 			case 3:
-				uzytkownik.ustawHaslo = pojedynczaDanaUzytkownika;
+				uzytkownik.ustawHaslo(pojedynczaDanaUzytkownika);
 				break;
 			}
 			pojedynczaDanaUzytkownika = "";

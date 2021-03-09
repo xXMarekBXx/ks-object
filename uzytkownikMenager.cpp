@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "uzytkownik.h"
 #include "uzytkownikMenager.h"
 
 using namespace std;
@@ -73,4 +72,8 @@ void UzytkownikMenager::wypiszWszystkichUzytkownikow() {
 		cout << uzytkownicy[i].pobierzLogin() << endl;
 		cout << uzytkownicy[i].pobierzHaslo() << endl;
 	}
+}
+
+void UzytkownikMenager::wczytajUzytkownikowZPliku() {
+	plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
