@@ -8,8 +8,7 @@ using namespace std;
 
 class KsiazkaAdresowa {	
 		
-	UzytkownikMenager uzytkownikMenager;
-	PlikZUzytkownikami plikZUzytkownikami;
+	UzytkownikMenager uzytkownikMenager;	
 
 public:
 	KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenager(nazwaPlikuZUzytkownikami) {

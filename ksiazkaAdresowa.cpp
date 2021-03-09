@@ -17,5 +17,5 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
 }
 
 void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
-	plikZUzytkownikami.wczytajUzytkownikowZPliku();
+	uzytkownikMenager.wczytajUzytkownikowZPliku();
 }
