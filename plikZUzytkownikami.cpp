@@ -22,8 +22,7 @@ bool PlikZUzytkownikami::czyPlikJestPusty()
 		return false;
 }
 
-void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
-{
+void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
 	string liniaZDanymiUzytkownika = "";
 	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
 
@@ -46,8 +45,7 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
 }
 
 
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
-{
+string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
 	string liniaZDanymiUzytkownika = "";
 	
 	liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId()) + '|';
@@ -55,4 +53,59 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 	liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
 
 	return liniaZDanymiUzytkownika;
+}
+
+void PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
+
+	Uzytkownik uzytkownik;
+	string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
+
+	fstream plikTekstowy;
+	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
+
+	if (plikTekstowy.good() == true)
+	{
+		while (getline(plikTekstowy, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
+		{
+			uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
+			uzytkownicy.push_back(uzytkownik);
+		}
+
+	}
+	plikTekstowy.close();
+}
+
+Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
+{
+	Uzytkownik uzytkownik;
+	string pojedynczaDanaUzytkownika = "";
+	int numerPojedynczejDanejUzytkownika = 1;
+
+	int dlugoscDanychJednegoUzytkownikaOddzielonePionowymiKreskami = daneJednegoUzytkownikaOddzielonePionowymiKreskami.length();
+
+	for (int pozycjaZnaku = 0; pozycjaZnaku < dlugoscDanychJednegoUzytkownikaOddzielonePionowymiKreskami; pozycjaZnaku++)
+	{
+		if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
+		{
+			pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
+		}
+		else
+		{
+			switch (numerPojedynczejDanejUzytkownika)
+			{
+			case 1:
+				uzytkownik.pobierzId = atoi(pojedynczaDanaUzytkownika.c_str());
+				break;
+			case 2:
+				uzytkownik.ustawLogin = pojedynczaDanaUzytkownika;
+				break;
+			case 3:
+				uzytkownik.ustawHaslo = pojedynczaDanaUzytkownika;
+				break;
+			}
+			pojedynczaDanaUzytkownika = "";
+			numerPojedynczejDanejUzytkownika++;
+		}
+	}
+	return uzytkownik;
 }

@@ -15,3 +15,7 @@ void KsiazkaAdresowa::rejestracjaUzytkownika() {
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
 	uzytkownikMenager.wypiszWszystkichUzytkownikow();
 }
+
+void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
+	plikZUzytkownikami.wczytajUzytkownikowZPliku();
+}
