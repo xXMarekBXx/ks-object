@@ -8,8 +8,10 @@
 
 using namespace std;
 
-bool PlikZUzytkownikami::czyPlikJestPusty()
-{
+bool PlikZUzytkownikami::czyPlikJestPusty() {
+
+	fstream plikTekstowy;
+
 	plikTekstowy.seekg(0, ios::end);
 	if (plikTekstowy.tellg() == 0)
 		return true;
@@ -18,7 +20,11 @@ bool PlikZUzytkownikami::czyPlikJestPusty()
 }
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
+
+	fstream plikTekstowy;
+
 	string liniaZDanymiUzytkownika = "";
+
 	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
 
 	if (plikTekstowy.good() == true)
@@ -50,8 +56,9 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 	return liniaZDanymiUzytkownika;
 }
 
-vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
+vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
 
+	fstream plikTekstowy;
 	Uzytkownik uzytkownik;
 	vector <Uzytkownik> uzytkownicy;
 	string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
@@ -70,8 +77,8 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku(){
 	return uzytkownicy;
 }
 
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
-{
+Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami) {
+
 	Uzytkownik uzytkownik;
 	string pojedynczaDanaUzytkownika = "";
 	int numerPojedynczejDanejUzytkownika = 1;

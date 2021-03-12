@@ -19,3 +19,8 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
 void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
 	uzytkownikMenager.wczytajUzytkownikowZPliku();
 }
+
+int KsiazkaAdresowa::logowanieUzytkownika() {
+	uzytkownikMenager.logowanieUzytkownika();
+	return 0;
+}

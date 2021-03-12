@@ -26,6 +26,7 @@ public:
 	void rejestracjaUzytkownika();
 	void wypiszWszystkichUzytkownikow();
 	void wczytajUzytkownikowZPliku();
+	int logowanieUzytkownika(); //vector <Uzytkownik> &uzytkownicy
 };
 
 #endif
