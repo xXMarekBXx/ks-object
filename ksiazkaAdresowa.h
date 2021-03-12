@@ -18,6 +18,7 @@ public:
 	void wypiszWszystkichUzytkownikow();
 	void wczytajUzytkownikowZPliku();
 	int logowanieUzytkownika();
+	bool czyUzytkownikJestZalogowany();
 };
 
 #endif

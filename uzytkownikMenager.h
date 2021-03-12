@@ -27,6 +27,7 @@ public:
 	void wypiszWszystkichUzytkownikow();
 	void wczytajUzytkownikowZPliku();
 	int logowanieUzytkownika(); //vector <Uzytkownik> &uzytkownicy
+	bool czyUzytkownikJestZalogowany();
 };
 
 #endif

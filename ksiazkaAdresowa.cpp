@@ -21,6 +21,14 @@ void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
 }
 
 int KsiazkaAdresowa::logowanieUzytkownika() {
-	uzytkownikMenager.logowanieUzytkownika();
-	return 0;
+	int idZalogowanegoUzytkownika = 0;
+	return idZalogowanegoUzytkownika = uzytkownikMenager.logowanieUzytkownika();	
+}
+
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
+{
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany() > 0)
+		return true;
+	else
+		return false;
 }

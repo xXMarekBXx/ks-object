@@ -78,7 +78,16 @@ void UzytkownikMenager::wczytajUzytkownikowZPliku() {
 	plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
-int UzytkownikMenager::logowanieUzytkownika(){
+bool UzytkownikMenager::czyUzytkownikJestZalogowany()
+{
+	if (idZalogowanegoUzytkownika > 0)
+		return true;
+	else
+		return false;
+}
+
+int UzytkownikMenager::logowanieUzytkownika() {
+
 	Uzytkownik uzytkownik;
 	string login = "", haslo = "";
 

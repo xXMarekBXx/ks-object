@@ -12,7 +12,7 @@ int main() {
 	//ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 
 	int idZalogowanegoUzytkownika = 0;
-			
+	
 	while (true)
 	{
 		cout << "MENU" << endl;
@@ -23,7 +23,7 @@ int main() {
 		int wybor;
 		cin >> wybor;
 
-		if (idZalogowanegoUzytkownika == 0)
+		if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
 		{
 			switch (wybor)
 			{
@@ -31,7 +31,8 @@ int main() {
 				ksiazkaAdresowa.rejestracjaUzytkownika();
 				break;
 			case 2:
-				idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
+				ksiazkaAdresowa.logowanieUzytkownika();
+				ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true;
 				break;
 			case 9:
 				exit(0);
