@@ -5,34 +5,36 @@
 #include "ksiazkaAdresowa.h"
 
 int main() {
+
 	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
 	ksiazkaAdresowa.wczytajUzytkownikowZPliku();
 	//ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 	//ksiazkaAdresowa.rejestracjaUzytkownika();
 	//ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 
-	int idZalogowanegoUzytkownika = 0;
+	//int idZalogowanegoUzytkownika = 0;
 	
 	while (true)
 	{
-		cout << "MENU" << endl;
+		if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
+		{
+		system("cls");
+		cout << "    >>> MENU  GLOWNE <<<" << endl;
 		cout << "-----------------------------" << endl;
 		cout << "1. Rejestracja" << endl;
 		cout << "2. Logowanie" << endl;
 		cout << "9. zamknij program" << endl;
+		cout << "Twoj wybor: ";
 		int wybor;
 		cin >> wybor;
-
-		if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
-		{
+				
 			switch (wybor)
 			{
 			case 1:
 				ksiazkaAdresowa.rejestracjaUzytkownika();
 				break;
 			case 2:
-				ksiazkaAdresowa.logowanieUzytkownika();
-				ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true;
+				ksiazkaAdresowa.logowanieUzytkownika();				
 				break;
 			case 9:
 				exit(0);
@@ -42,45 +44,49 @@ int main() {
 				system("pause");
 				break;
 			}
-		}else {
-			/*
-			if (adresaci.empty() == true)
-				// Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
-				// Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
-				// to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
-				idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
-			*/
-			cout << "7. Rejestracja" << endl;
-			cout << "8. Logowanie" << endl;			
+		}else {			
+			system("cls");
+			cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+			cout << "---------------------------" << endl;
+			cout << "1. Dodaj adresata" << endl;
+			cout << "2. Wyszukaj po imieniu" << endl;
+			cout << "3. Wyszukaj po nazwisku" << endl;
+			cout << "4. Wyswietl adresatow" << endl;
+			cout << "5. Usun adresata" << endl;
+			cout << "6. Edytuj adresata" << endl;
+			cout << "---------------------------" << endl;
+			cout << "7. Zmien haslo" << endl;
+			cout << "8. Wyloguj sie" << endl;
+			cout << "---------------------------" << endl;
+			cout << "Twoj wybor: ";
 			int wybor;
-			cin >> wybor;
+			cin >> wybor;			
 
 			switch (wybor)
 			{
 			case 1:
-				//idOstatniegoAdresata = dodajAdresata(adresaci, idZalogowanegoUzytkownika, idOstatniegoAdresata);
+				// ksiazkaAdresowa.dodajAdresata();
 				break;
 			case 2:
-				//wyszukajAdresatowPoImieniu(adresaci);
+				//ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
 				break;
 			case 3:
-				//wyszukajAdresatowPoNazwisku(adresaci);
+				//ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
 				break;
 			case 4:
-				//wyswietlWszystkichAdresatow(adresaci);
+				//ksiazkaAdresowa.wyswietlWszystkichAdesatow();
 				break;
 			case 5:
-				//idUsunietegoAdresata = usunAdresata(adresaci);
-				//idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
+				//ksiazkaAdresowa.usunAdresata();
 				break;
 			case 6:
-				//edytujAdresata(adresaci);
+				//ksiazkaAdresowa.edytujAdresata();
 				break;
 			case 7:
-				//zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+				//ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
 				break;
 			case 8:
-				idZalogowanegoUzytkownika = 0;				
+				//ksiazkaAdresowa.wylogowanieUzytkownika();			
 				break;
 			}
 		}
