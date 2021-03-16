@@ -112,8 +112,7 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
 	return uzytkownik;
 }
 
-void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku()
-{
+void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy) {
 	fstream plikTekstowy;
 	string liniaZDanymiUzytkownika = "";
 	vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();

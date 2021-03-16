@@ -26,6 +26,10 @@ void KsiazkaAdresowa::logowanieUzytkownika() {
 	uzytkownikMenager.logowanieUzytkownika();
 }
 
+void KsiazkaAdresowa::wylogowanieUzytkownika() {
+	uzytkownikMenager.wylogowanieUzytkownika();
+}
+
 bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
 	if (uzytkownikMenager.czyUzytkownikJestZalogowany() == true)
 		return true;

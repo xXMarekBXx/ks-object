@@ -89,6 +89,7 @@ int main() {
 			case 8:
 				//ksiazkaAdresowa.wylogowanieUzytkownika();	
 				//idZalogowanegoUzytkownika = 0;
+				ksiazkaAdresowa.wylogowanieUzytkownika();
 				break;
 			}
 		}
