@@ -108,7 +108,8 @@ int UzytkownikMenager::logowanieUzytkownika() {
 				{
 					cout << endl << "Zalogowales sie." << endl << endl;
 					system("pause");
-					return itr->pobierzId();
+					idZalogowanegoUzytkownika = itr->pobierzId();
+					return idZalogowanegoUzytkownika;
 				}
 			}
 			cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -120,4 +121,22 @@ int UzytkownikMenager::logowanieUzytkownika() {
 	cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
 	system("pause");
 	return 0;
+}
+
+void UzytkownikMenager::zmianaHaslaZalogowanegoUzytkownika()
+{
+	string noweHaslo = "";
+	cout << "Podaj nowe haslo: ";
+	cin >> noweHaslo;
+
+	for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
+	{
+		if (itr->pobierzId() == idZalogowanegoUzytkownika)
+		{
+			itr->pobierzHaslo() = noweHaslo;
+			cout << "Haslo zostalo zmienione." << endl << endl;
+			system("pause");
+		}
+	}
+	plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku();
 }

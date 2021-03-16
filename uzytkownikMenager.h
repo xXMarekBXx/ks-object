@@ -28,6 +28,7 @@ public:
 	void wczytajUzytkownikowZPliku();
 	int logowanieUzytkownika(); //vector <Uzytkownik> &uzytkownicy
 	bool czyUzytkownikJestZalogowany();
+	void zmianaHaslaZalogowanegoUzytkownika();
 };
 
 #endif

@@ -20,15 +20,19 @@ void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
 	uzytkownikMenager.wczytajUzytkownikowZPliku();
 }
 
-int KsiazkaAdresowa::logowanieUzytkownika() {
-	int idZalogowanegoUzytkownika = 0;
-	return idZalogowanegoUzytkownika = uzytkownikMenager.logowanieUzytkownika();	
+void KsiazkaAdresowa::logowanieUzytkownika() {
+	//int idZalogowanegoUzytkownika = 0;
+	//return idZalogowanegoUzytkownika = uzytkownikMenager.logowanieUzytkownika();
+	uzytkownikMenager.logowanieUzytkownika();
 }
 
-bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
-{
-	if (uzytkownikMenager.czyUzytkownikJestZalogowany() > 0)
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany() == true)
 		return true;
 	else
 		return false;
+}
+
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
+	uzytkownikMenager.zmianaHaslaZalogowanegoUzytkownika();
 }

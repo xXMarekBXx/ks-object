@@ -34,7 +34,8 @@ int main() {
 				ksiazkaAdresowa.rejestracjaUzytkownika();
 				break;
 			case 2:
-				ksiazkaAdresowa.logowanieUzytkownika();				
+				ksiazkaAdresowa.logowanieUzytkownika();	
+				//ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true;
 				break;
 			case 9:
 				exit(0);
@@ -83,10 +84,11 @@ int main() {
 				//ksiazkaAdresowa.edytujAdresata();
 				break;
 			case 7:
-				//ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+				ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
 				break;
 			case 8:
-				//ksiazkaAdresowa.wylogowanieUzytkownika();			
+				//ksiazkaAdresowa.wylogowanieUzytkownika();	
+				//idZalogowanegoUzytkownika = 0;
 				break;
 			}
 		}
