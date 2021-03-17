@@ -29,19 +29,22 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
 
 	if (plikTekstowy.good() == true)
 	{
+		
 		liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
-
+		
 		if (czyPlikJestPusty() == true)
 		{
-			plikTekstowy << liniaZDanymiUzytkownika;
+			plikTekstowy << liniaZDanymiUzytkownika << endl;
 		}
 		else
-		{
-			plikTekstowy << endl << liniaZDanymiUzytkownika;
+		{			
+			plikTekstowy << liniaZDanymiUzytkownika;//////////////??????
+			
 		}
 	}
 	else
 		cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
+
 	plikTekstowy.close();
 }
 
