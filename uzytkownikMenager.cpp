@@ -137,14 +137,12 @@ void UzytkownikMenager::zmianaHaslaZalogowanegoUzytkownika()
 	cout << "Podaj nowe haslo: ";
 
 	cin >> noweHaslo;
-
-	uzytkownik.ustawHaslo(noweHaslo);
-	
+		
 	for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
 	{
 		if (itr->pobierzId() == idZalogowanegoUzytkownika)
 		{
-			itr->pobierzHaslo() = noweHaslo;
+			itr->ustawHaslo(noweHaslo);
 			cout << "Haslo zostalo zmienione." << endl << endl;
 			system("pause");
 		}
