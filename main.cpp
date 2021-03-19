@@ -45,7 +45,8 @@ int main() {
 				system("pause");
 				break;
 			}
-		}else {			
+		}else {	
+			
 			system("cls");
 			cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
 			cout << "---------------------------" << endl;
