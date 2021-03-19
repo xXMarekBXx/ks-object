@@ -149,3 +149,16 @@ void UzytkownikMenager::zmianaHaslaZalogowanegoUzytkownika()
 	}
 	plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
+
+int UzytkownikMenager::dodajAdresata(int idOstatniegoAdresata) {
+	Adresat adresat;
+
+	system("cls");
+	cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
+	//adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika, idOstatniegoAdresata);
+
+	adresaci.push_back(adresat);
+	//dopiszAdresataDoPliku(adresat);
+
+	return ++idOstatniegoAdresata;
+}

@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "uzytkownik.h"
+#include "adresat.h"
 #include "plikZUzytkownikami.h"
 
 using namespace std;
@@ -12,7 +13,8 @@ using namespace std;
 class UzytkownikMenager {
 
 	int idZalogowanegoUzytkownika;
-	vector <Uzytkownik> uzytkownicy;	
+	vector <Uzytkownik> uzytkownicy;
+	vector <Adresat> adresaci;
 	
 	Uzytkownik podajDaneNowegoUzytkownika();
 	int pobierzIdNowegoUzytkownika();
@@ -30,6 +32,7 @@ public:
 	int wylogowanieUzytkownika();
 	bool czyUzytkownikJestZalogowany();
 	void zmianaHaslaZalogowanegoUzytkownika();
+	int dodajAdresata(int idOstatniegoAdresata);
 };
 
 #endif
