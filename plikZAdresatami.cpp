@@ -7,13 +7,16 @@
 #include "plikZAdresatami.h"
 
 
-int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
 	Adresat adresat;
+	vector <Adresat> adresci;
+
 	int idOstatniegoAdresata = 0;
 	string daneJednegoAdresataOddzielonePionowymiKreskami = "";
 	string daneOstaniegoAdresataWPliku = "";
 	fstream plikTekstowy;
+
 	plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
 
 	if (plikTekstowy.good() == true)
@@ -44,26 +47,21 @@ int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogow
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
-	MetodyPomocnicze metodyPomocnicze;
-
 	int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-	int idUzytkownika = metodyPomocnicze.konwersjaStringNaInt(metodyPomocnicze.pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
+	int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
 
 	return idUzytkownika;
 }
 
 int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
-	MetodyPomocnicze metodyPomocnicze;
-
 	int pozycjaRozpoczeciaIdAdresata = 0;
-	int idAdresata = metodyPomocnicze.konwersjaStringNaInt(metodyPomocnicze.pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata));
+	int idAdresata = MetodyPomocnicze::konwersjaStringNaInt(MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata));
 	return idAdresata;
 }
 
 Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
 {
-	Adresat adresat;
 	string pojedynczaDanaAdresata = "";
 	int numerPojedynczejDanejAdresata = 1;
 
@@ -106,4 +104,31 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
 		}
 	}
 	return adresat;
+}
+
+void PlikZAdresatami::dopiszAdresataDoPliku()
+{
+	string liniaZDanymiAdresata = "";
+	fstream plikTekstowy;
+	plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+
+	if (plikTekstowy.good() == true)
+	{
+		liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
+
+		if (czyPlikJestPusty(plikTekstowy) == true)
+		{
+			plikTekstowy << liniaZDanymiAdresata;
+		}
+		else
+		{
+			plikTekstowy << endl << liniaZDanymiAdresata;
+		}
+	}
+	else
+	{
+		cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
+	}
+	plikTekstowy.close();
+	system("pause");
 }
