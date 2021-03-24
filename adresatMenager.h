@@ -16,7 +16,7 @@ class AdresatMenager {
 	vector <Adresat> adresaci;
 		
 	Adresat podajDaneNowegoAdresata(int idOstatniegoAdresata);
-	PlikZAdresatami plikZAdresatami;
+	PlikZAdresatami plikZAdresatami; // PlikZAdresatami plikZAdresatami(string ksiazka_adresowa) {}; ??? Jak to naprawiæ?
 
 
 public:

@@ -10,22 +10,24 @@
 int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
 	Adresat adresat;
-	vector <Adresat> adresci;
+	vector <Adresat> adresaci;
 
 	int idOstatniegoAdresata = 0;
 	string daneJednegoAdresataOddzielonePionowymiKreskami = "";
 	string daneOstaniegoAdresataWPliku = "";
 	fstream plikTekstowy;
 
-	plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+	PlikZAdresatami plikZAdresatami;
+
+	plikTekstowy.open(plikZAdresatami.nazwaPlikuZAdresatami.c_str(), ios::in);
 
 	if (plikTekstowy.good() == true)
 	{
 		while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
 		{
-			if (idZalogowanegoUzytkownika == pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+			if (idZalogowanegoUzytkownika == plikZAdresatami.pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
 			{
-				adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
+				adresat = plikZAdresatami.pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
 				adresaci.push_back(adresat);
 			}
 		}
@@ -60,8 +62,10 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
 	return idAdresata;
 }
 
-Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
-{
+Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami) {
+
+	Adresat adresat;
+
 	string pojedynczaDanaAdresata = "";
 	int numerPojedynczejDanejAdresata = 1;
 
@@ -108,15 +112,17 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
 
 void PlikZAdresatami::dopiszAdresataDoPliku()
 {
+	PlikZAdresatami plikZAdresatami;
+
 	string liniaZDanymiAdresata = "";
 	fstream plikTekstowy;
-	plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+	plikTekstowy.open(plikZAdresatami.nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
 
 	if (plikTekstowy.good() == true)
 	{
-		liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
+		liniaZDanymiAdresata = MetodyPomocnicze::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-		if (czyPlikJestPusty(plikTekstowy) == true)
+		if (MetodyPomocnicze::czyPlikJestPusty(plikTekstowy) == true)
 		{
 			plikTekstowy << liniaZDanymiAdresata;
 		}
