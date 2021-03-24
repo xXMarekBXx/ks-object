@@ -6,18 +6,19 @@
 
 using namespace std;
 
-int AdresatMenager::dodajAdresata() {
+Adresat AdresatMenager::dodajAdresata() {
 
 	Adresat adresat;
 
-	int idOstatniegoAdresata = PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+	vector <Adresat> idOstatniegoAdresata = PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
 	adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
 
 	adresaci.push_back(adresat);
 	PlikZAdresatami::dopiszAdresataDoPliku();
 
-	return ++idOstatniegoAdresata;
+	//return ++idOstatniegoAdresata;
+	return adresat;
 }
 
 Adresat AdresatMenager::podajDaneNowegoAdresata(int idOstatniegoAdresata)

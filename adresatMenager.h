@@ -17,15 +17,14 @@ class AdresatMenager {
 		
 	Adresat podajDaneNowegoAdresata(int idOstatniegoAdresata);
 	PlikZAdresatami plikZAdresatami; // PlikZAdresatami plikZAdresatami(string ksiazka_adresowa) {}; ??? Jak to naprawiæ?
-
-
+	
 public:
 
 	AdresatMenager(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {
 		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 	};
 
-	int dodajAdresata();
+	Adresat dodajAdresata();
 };
 
 #endif

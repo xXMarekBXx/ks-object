@@ -10,7 +10,6 @@
 #include <cstdlib>
 #include "adresat.h"
 #include "metodyPomocnicze.h"
-#include "adresatMenager.h"
 
 using namespace std;
 
@@ -21,14 +20,13 @@ class PlikZAdresatami {
 	vector <Adresat> adresaci;
 	Adresat adresat;
 
-	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);	
+	static int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);	
 	static int idZalogowanegoUzytkownika;
 
 public:
 	PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
-	PlikZAdresatami() {};
 
-	static int wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+	static vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 	static Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 	static int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	static void dopiszAdresataDoPliku();
