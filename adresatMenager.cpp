@@ -6,28 +6,27 @@
 
 using namespace std;
 
-Adresat AdresatMenager::dodajAdresata() {
+void AdresatMenager::dodajAdresata() {
 
 	Adresat adresat;
 
 	vector <Adresat> idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
-	adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
+	adresat = podajDaneNowegoAdresata();
 
 	adresaci.push_back(adresat);
 	plikZAdresatami.dopiszAdresataDoPliku();
 
 	//return ++idOstatniegoAdresata;
-	return adresat;
+	//return adresat;
 }
 
-Adresat AdresatMenager::podajDaneNowegoAdresata(int idOstatniegoAdresata)
-{
+Adresat AdresatMenager::podajDaneNowegoAdresata() {
 	MetodyPomocnicze metodyPomocnicze;
 
 	Adresat adresat;
 
-	adresat.ustawId(++idOstatniegoAdresata);
+	adresat.ustawId((plikZAdresatami.pobierzIdOstatniegoAdresata() + 1));
 	adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
 	cout << "Podaj imie: ";

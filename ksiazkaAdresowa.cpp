@@ -40,9 +40,9 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
 }
 
 void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-	adresatMenager.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+	adresatMenager->wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 }
 
 void KsiazkaAdresowa::dodajAdresata() {
-	adresatMenager.dodajAdresata();
+	adresatMenager->dodajAdresata();
 }

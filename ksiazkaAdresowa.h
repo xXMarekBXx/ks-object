@@ -10,24 +10,19 @@ using namespace std;
 class KsiazkaAdresowa {
 
 	UzytkownikMenager uzytkownikMenager;
-	AdresatMenager adresatMenager;
+	AdresatMenager *adresatMenager;
 
 public:
 	KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenager(nazwaPlikuZUzytkownikami) {
-		uzytkownikMenager.wczytajUzytkownikowZPliku();				
+		uzytkownikMenager.wczytajUzytkownikowZPliku();
+		adresatMenager = NULL;
 	};
-	
-	/*
 
-	Takie pomys³y przychodzi³y mi do g³owy:
-
-	adresatMenager.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-
-	KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : adresatMenager(nazwaPlikuZUzytkownikami) {
-		adresatMenager.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-	};
-	*/
-
+	~KsiazkaAdresowa()
+	{
+		delete adresatMenager;
+		adresatMenager = NULL;
+	}
 
 	void rejestracjaUzytkownika();
 	void wypiszWszystkichUzytkownikow();

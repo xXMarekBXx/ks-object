@@ -15,7 +15,7 @@ class AdresatMenager {
 	int idZalogowanegoUzytkownika;	
 	vector <Adresat> adresaci;
 		
-	Adresat podajDaneNowegoAdresata(int idOstatniegoAdresata);
+	Adresat podajDaneNowegoAdresata();
 	PlikZAdresatami plikZAdresatami;
 	
 public:
@@ -23,7 +23,7 @@ public:
 		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 	};
 
-	Adresat dodajAdresata();
+	void dodajAdresata();
 	void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 };
 
