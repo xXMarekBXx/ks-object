@@ -67,7 +67,7 @@ int main() {
 			switch (wybor)
 			{
 			case 1:
-				// ksiazkaAdresowa.dodajAdresata();
+				 ksiazkaAdresowa.dodajAdresata();
 				break;
 			case 2:
 				//ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
@@ -87,9 +87,7 @@ int main() {
 			case 7:
 				ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
 				break;
-			case 8:
-				//ksiazkaAdresowa.wylogowanieUzytkownika();	
-				//idZalogowanegoUzytkownika = 0;
+			case 8:				
 				ksiazkaAdresowa.wylogowanieUzytkownika();
 				break;
 			}

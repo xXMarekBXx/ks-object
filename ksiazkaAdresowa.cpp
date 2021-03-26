@@ -20,9 +20,7 @@ void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
 	uzytkownikMenager.wczytajUzytkownikowZPliku();
 }
 
-void KsiazkaAdresowa::logowanieUzytkownika() {
-	//int idZalogowanegoUzytkownika = 0;
-	//return idZalogowanegoUzytkownika = uzytkownikMenager.logowanieUzytkownika();
+void KsiazkaAdresowa::logowanieUzytkownika() {	
 	uzytkownikMenager.logowanieUzytkownika();
 }
 
@@ -39,4 +37,12 @@ bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
 	uzytkownikMenager.zmianaHaslaZalogowanegoUzytkownika();
+}
+
+void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
+	adresatMenager.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+}
+
+void KsiazkaAdresowa::dodajAdresata() {
+	adresatMenager.dodajAdresata();
 }

@@ -33,8 +33,7 @@ public:
 	int logowanieUzytkownika();
 	int wylogowanieUzytkownika();
 	bool czyUzytkownikJestZalogowany();
-	void zmianaHaslaZalogowanegoUzytkownika();
-
+	void zmianaHaslaZalogowanegoUzytkownika();	
 };
 
 #endif

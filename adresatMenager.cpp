@@ -10,12 +10,12 @@ Adresat AdresatMenager::dodajAdresata() {
 
 	Adresat adresat;
 
-	vector <Adresat> idOstatniegoAdresata = PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+	vector <Adresat> idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
 	adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
 
 	adresaci.push_back(adresat);
-	PlikZAdresatami::dopiszAdresataDoPliku();
+	plikZAdresatami.dopiszAdresataDoPliku();
 
 	//return ++idOstatniegoAdresata;
 	return adresat;
@@ -56,4 +56,8 @@ Adresat AdresatMenager::podajDaneNowegoAdresata(int idOstatniegoAdresata)
 	adresat.ustawAdres(adres);
 
 	return adresat;
+}
+
+void AdresatMenager::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
+	plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 }
