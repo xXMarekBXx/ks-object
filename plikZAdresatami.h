@@ -22,6 +22,7 @@ class PlikZAdresatami {
 
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);	
 	int idZalogowanegoUzytkownika;
+	int idOstatniegoAdresata;
 
 public:
 	PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
@@ -30,6 +31,7 @@ public:
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	void dopiszAdresataDoPliku();
+	int pobierzIdOstatniegoAdresata();
 };
 
 #endif

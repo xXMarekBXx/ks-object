@@ -6,6 +6,10 @@
 #include <vector>
 #include "plikZAdresatami.h"
 
+int PlikZAdresatami::pobierzIdOstatniegoAdresata()
+{
+	return idOstatniegoAdresata;
+}
 
 vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
@@ -39,7 +43,7 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
 	if (daneOstaniegoAdresataWPliku != "")
 	{
 		idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-		//return idOstatniegoAdresata;
+		//return idOstatniegoAdresata;		
 	}
 	else
 		return adresaci;
