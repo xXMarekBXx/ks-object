@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "adresat.h"
 
 using namespace std;

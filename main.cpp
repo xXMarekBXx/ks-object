@@ -1,18 +1,12 @@
 ﻿#include <iostream>
-#include <vector>
-#include <string>
-#include "uzytkownik.h"
 #include "ksiazkaAdresowa.h"
+
+using namespace std;
 
 int main() {
 
-	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
-	ksiazkaAdresowa.wczytajUzytkownikowZPliku();
-	//ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-	//ksiazkaAdresowa.rejestracjaUzytkownika();
-	//ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-
-	//int idZalogowanegoUzytkownika = 0;
+	vector <Adresat> adresaci;
+	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 	
 	while (true)
 	{
@@ -34,8 +28,7 @@ int main() {
 				ksiazkaAdresowa.rejestracjaUzytkownika();
 				break;
 			case 2:
-				ksiazkaAdresowa.logowanieUzytkownika();	
-				//ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true;
+				ksiazkaAdresowa.logowanieUzytkownika();					
 				break;
 			case 9:
 				exit(0);
@@ -76,7 +69,7 @@ int main() {
 				//ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
 				break;
 			case 4:
-				//ksiazkaAdresowa.wyswietlWszystkichAdesatow();
+				ksiazkaAdresowa.wyswietlWszystkichAdesatow();
 				break;
 			case 5:
 				//ksiazkaAdresowa.usunAdresata();

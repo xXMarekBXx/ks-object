@@ -1,9 +1,20 @@
-#include <iostream>
-#include <vector>
-#include <string>
 #include "uzytkownikMenager.h"
 
-using namespace std;
+int UzytkownikMenager::pobierzIdZalogowanegoUzytkownika()
+{
+	return idZalogowanegoUzytkownika;
+}
+
+void UzytkownikMenager::rejestracjaUzytkownika() {
+
+	Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
+
+	uzytkownicy.push_back(uzytkownik);
+	plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+
+	cout << "Konto zalozono pomyslnie" << endl << endl;
+	system("pause");
+}
 
 Uzytkownik UzytkownikMenager::podajDaneNowegoUzytkownika() {
 
@@ -52,17 +63,6 @@ bool UzytkownikMenager::czyIstniejeLogin(string login) {
 	return false;
 }
 
-void UzytkownikMenager::rejestracjaUzytkownika() {
-
-	Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
-	
-	uzytkownicy.push_back(uzytkownik);
-	plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
-
-	cout << "Konto zalozono pomyslnie" << endl << endl;
-	system("pause");
-}
-
 void UzytkownikMenager::wypiszWszystkichUzytkownikow() {
 	int dlugoscWektoraUzytkownicy = uzytkownicy.size();
 
@@ -72,10 +72,6 @@ void UzytkownikMenager::wypiszWszystkichUzytkownikow() {
 		cout << uzytkownicy[i].pobierzLogin() << endl;
 		cout << uzytkownicy[i].pobierzHaslo() << endl;
 	}
-}
-
-void UzytkownikMenager::wczytajUzytkownikowZPliku() {
-	plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
 bool UzytkownikMenager::czyUzytkownikJestZalogowany()
@@ -123,11 +119,6 @@ int UzytkownikMenager::logowanieUzytkownika() {
 	return 0;
 }
 
-int UzytkownikMenager::wylogowanieUzytkownika() {
-	idZalogowanegoUzytkownika = 0;
-	return idZalogowanegoUzytkownika;
-}
-
 void UzytkownikMenager::zmianaHaslaZalogowanegoUzytkownika()
 {
 	Uzytkownik uzytkownik;
@@ -148,4 +139,9 @@ void UzytkownikMenager::zmianaHaslaZalogowanegoUzytkownika()
 		}
 	}
 	plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
+int UzytkownikMenager::wylogowanieUzytkownika() {
+	idZalogowanegoUzytkownika = 0;
+	return idZalogowanegoUzytkownika;
 }

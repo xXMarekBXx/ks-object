@@ -1,15 +1,6 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include "metodyPomocnicze.h"
-#include "adresat.h"
+#include "MetodyPomocnicze.h"
 
-using namespace std;
-
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
+string MetodyPomocnicze::konwersjaIntNaString(int liczba)
 {
 	ostringstream ss;
 	ss << liczba;
@@ -26,48 +17,45 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 	return liczbaInt;
 }
 
-string  MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
+string MetodyPomocnicze::wczytajLinie()
 {
-	if (!tekst.empty())
-	{
-		transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-		tekst[0] = toupper(tekst[0]);
-	}
-	return tekst;
+	string wejscie = "";
+	getline(cin, wejscie);
+	return wejscie;
 }
 
-string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
+char MetodyPomocnicze::wczytajZnak()
 {
-	string liczba = "";
-	while (isdigit(tekst[pozycjaZnaku]) == 1)
+	string wejscie = "";
+	char znak = { 0 };
+
+	while (true)
 	{
-		liczba += tekst[pozycjaZnaku];
-		pozycjaZnaku++;
+		getline(cin, wejscie);
+
+		if (wejscie.length() == 1)
+		{
+			znak = wejscie[0];
+			break;
+		}
+		cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
+	}
+	return znak;
+}
+
+int MetodyPomocnicze::wczytajLiczbeCalkowita()
+{
+	string wejscie = "";
+	int liczba = 0;
+
+	while (true)
+	{
+		getline(cin, wejscie);
+
+		stringstream myStream(wejscie);
+		if (myStream >> liczba)
+			break;
+		cout << "To nie jest liczba. Wpisz ponownie. " << endl;
 	}
 	return liczba;
-}
-
-bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy) {
-	plikTekstowy.seekg(0, ios::end);
-	if (plikTekstowy.tellg() == 0)
-		return true;
-	else
-		return false;
-}
-
-string MetodyPomocnicze::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami() {
-	
-	Adresat adresat;
-
-	string liniaZDanymiAdresata = "";
-
-	liniaZDanymiAdresata += konwerjsaIntNaString(adresat.pobierzId()) + '|';
-	liniaZDanymiAdresata += konwerjsaIntNaString(adresat.pobierzIdUzytkownika()) + '|';
-	liniaZDanymiAdresata += adresat.pobierzImie() + '|';
-	liniaZDanymiAdresata += adresat.pobierzNazwisko() + '|';
-	liniaZDanymiAdresata += adresat.pobierzNumerTelefonu() + '|';
-	liniaZDanymiAdresata += adresat.pobierzEmail() + '|';
-	liniaZDanymiAdresata += adresat.pobierzAdres() + '|';
-
-	return liniaZDanymiAdresata;
 }

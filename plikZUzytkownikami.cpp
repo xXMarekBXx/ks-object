@@ -1,78 +1,58 @@
-#include <iostream>
-#include <windows.h>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include "plikZUzytkownikami.h"
+#include "PlikZUzytkownikami.h"
 
-using namespace std;
-
-bool PlikZUzytkownikami::czyPlikJestPusty() {
-
-	bool pusty = true;
+void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
+{
 	fstream plikTekstowy;
-
-
-	plikTekstowy.open("Uzytkownicy.txt", ios::app);
-	if (plikTekstowy.good() == true)
-	{
-		plikTekstowy.seekg(0, ios::end);
-		if (plikTekstowy.tellg() != 0)
-			pusty = false;
-	}
-	plikTekstowy.close();
-	return pusty;
-}
-
-void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
-
-	fstream plikTekstowy;
-
 	string liniaZDanymiUzytkownika = "";
-
-	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
+	plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::app);
 
 	if (plikTekstowy.good() == true)
 	{
-		
 		liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
-		
-		if (czyPlikJestPusty() == true)
+
+		if (czyPlikJestPusty(plikTekstowy) == true)
 		{
-			plikTekstowy << liniaZDanymiUzytkownika << endl;
+			plikTekstowy << liniaZDanymiUzytkownika;
 		}
 		else
-		{			
-			plikTekstowy << liniaZDanymiUzytkownika;
-			
+		{
+			plikTekstowy << endl << liniaZDanymiUzytkownika;
 		}
 	}
 	else
-		cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
-
+		cout << "Nie udalo sie otworzyc pliku " << NAZWA_PLIKU_Z_UZYTKOWNIKAMI << " i zapisac w nim danych." << endl;
 	plikTekstowy.close();
+
 }
 
+bool PlikZUzytkownikami::czyPlikJestPusty(fstream &plikTekstowy)
+{
+	plikTekstowy.seekg(0, ios::end);
+	if (plikTekstowy.tellg() == 0)
+		return true;
+	else
+		return false;
+}
 
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
+string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
+{
 	string liniaZDanymiUzytkownika = "";
-	
-	liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId()) + '|';
+
+	liniaZDanymiUzytkownika += MetodyPomocnicze::konwersjaIntNaString(uzytkownik.pobierzId()) + '|';
 	liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
 	liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
 
 	return liniaZDanymiUzytkownika;
 }
 
-vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
-
+vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
+{
 	fstream plikTekstowy;
 	Uzytkownik uzytkownik;
 	vector <Uzytkownik> uzytkownicy;
 	string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-		
-	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
+
+	plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::in);
 
 	if (plikTekstowy.good() == true)
 	{
@@ -81,13 +61,14 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
 			uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 			uzytkownicy.push_back(uzytkownik);
 		}
-		plikTekstowy.close();
-	}	
+
+	}
+	plikTekstowy.close();
 	return uzytkownicy;
 }
 
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami) {
-
+Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
+{
 	Uzytkownik uzytkownik;
 	string pojedynczaDanaUzytkownika = "";
 	int numerPojedynczejDanejUzytkownika = 1;
@@ -121,12 +102,13 @@ Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkown
 	return uzytkownik;
 }
 
-void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy) {
+void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy)
+{
 	fstream plikTekstowy;
 	string liniaZDanymiUzytkownika = "";
 	vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();
 
-	plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::out);
+	plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::out);
 
 	if (plikTekstowy.good() == true)
 	{
@@ -147,7 +129,7 @@ void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik>
 	}
 	else
 	{
-		cout << "Nie mozna otworzyc pliku " << nazwaPlikuZUzytkownikami << endl;
+		cout << "Nie mozna otworzyc pliku " << NAZWA_PLIKU_Z_UZYTKOWNIKAMI << endl;
 	}
 	plikTekstowy.close();
 }

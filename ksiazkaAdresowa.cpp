@@ -1,48 +1,62 @@
-#include <iostream>
-#include <windows.h>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include "ksiazkaAdresowa.h"
-#include "plikZUzytkownikami.h"
+#include "KsiazkaAdresowa.h"
 
-using namespace std;
-
-void KsiazkaAdresowa::rejestracjaUzytkownika() {
+void KsiazkaAdresowa::rejestracjaUzytkownika()
+{
 	uzytkownikMenager.rejestracjaUzytkownika();
 }
 
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
+void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
+{
 	uzytkownikMenager.wypiszWszystkichUzytkownikow();
 }
 
-void KsiazkaAdresowa::wczytajUzytkownikowZPliku() {
-	uzytkownikMenager.wczytajUzytkownikowZPliku();
-}
-
-void KsiazkaAdresowa::logowanieUzytkownika() {	
+void KsiazkaAdresowa::logowanieUzytkownika()
+{
 	uzytkownikMenager.logowanieUzytkownika();
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany())
+	{
+		adresatMenager = new AdresatMenager(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenager.pobierzIdZalogowanegoUzytkownika());
+	}
 }
 
-void KsiazkaAdresowa::wylogowanieUzytkownika() {
-	uzytkownikMenager.wylogowanieUzytkownika();
-}
-
-bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
-	if (uzytkownikMenager.czyUzytkownikJestZalogowany() == true)
-		return true;
-	else
-		return false;
-}
-
-void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
+{
 	uzytkownikMenager.zmianaHaslaZalogowanegoUzytkownika();
 }
 
-void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-	adresatMenager->wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+void KsiazkaAdresowa::wylogowanieUzytkownika()
+{
+	uzytkownikMenager.wylogowanieUzytkownika();
+	delete adresatMenager;
+	adresatMenager = NULL;
 }
 
-void KsiazkaAdresowa::dodajAdresata() {
-	adresatMenager->dodajAdresata();
+void KsiazkaAdresowa::dodajAdresata()
+{
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany())
+	{
+		adresatMenager->dodajAdresata();
+	}
+	else
+	{
+		cout << "Aby dodac adresata , nalezy najpierw sie zalogowac" << endl;
+		system("pause");
+	}
+}
+
+void KsiazkaAdresowa::wyswietlWszystkichAdesatow()
+{
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany())
+	{
+		adresatMenager->wyswietlWszystkichAdresatow();
+	}
+}
+
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
+{
+	if (uzytkownikMenager.czyUzytkownikJestZalogowany() > 0)
+		return true;
+	else
+		return false;
+
 }
