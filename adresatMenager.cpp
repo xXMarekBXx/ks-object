@@ -24,6 +24,7 @@ Adresat AdresatMenager::podajDaneNowegoAdresata() {
 
 	string imie;
 	cout << "Podaj imie: ";
+	cin.ignore();
 	imie = MetodyPomocnicze::wczytajLinie();
 	imie = plikZAdresatami.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
 	adresat.ustawImie(imie);

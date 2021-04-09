@@ -71,7 +71,7 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
 	if (plikTekstowy.good() == true)
 	{
 		while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
-		{
+		{			
 			if (idZalogowanegoUzytkownika == pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
 			{
 				adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
@@ -150,9 +150,16 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
-	int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-	int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
+	int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of("|") + 1;
+	int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(pobierzLiczbeByMarek(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));//by³o pobierzLiczbe()
 	return idUzytkownika;
+}
+
+string PlikZAdresatami::pobierzLiczbeByMarek(string tekst, int pozycjaZnaku)
+{
+	string liczba = "";
+	liczba = tekst[pozycjaZnaku];
+	return liczba;
 }
 
 string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku)
