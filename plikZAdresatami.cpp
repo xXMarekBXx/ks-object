@@ -151,21 +151,14 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
 	int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of("|") + 1;
-	int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(pobierzLiczbeByMarek(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));//by³o pobierzLiczbe()
+	int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
 	return idUzytkownika;
-}
-
-string PlikZAdresatami::pobierzLiczbeByMarek(string tekst, int pozycjaZnaku)
-{
-	string liczba = "";
-	liczba = tekst[pozycjaZnaku];
-	return liczba;
 }
 
 string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku)
 {
 	string liczba = "";
-	while (isdigit(tekst[pozycjaZnaku]) == 1)
+	while (isdigit(tekst[pozycjaZnaku]))
 	{
 		liczba += tekst[pozycjaZnaku];
 		pozycjaZnaku++;

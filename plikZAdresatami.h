@@ -23,8 +23,7 @@ class PlikZAdresatami {
 
 	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
 	bool czyPlikJestPusty(fstream &plikTekstowy);
-	string pobierzLiczbe(string tekst, int pozycjaZnaku);
-	string pobierzLiczbeByMarek(string tekst, int pozycjaZnaku);
+	string pobierzLiczbe(string tekst, int pozycjaZnaku);	
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
