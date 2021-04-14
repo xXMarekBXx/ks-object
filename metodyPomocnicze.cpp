@@ -19,6 +19,7 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 
 string MetodyPomocnicze::wczytajLinie()
 {
+	cin.ignore();
 	string wejscie = "";
 	getline(cin, wejscie);
 	return wejscie;
@@ -50,6 +51,7 @@ int MetodyPomocnicze::wczytajLiczbeCalkowita()
 
 	while (true)
 	{
+		cin.ignore();
 		getline(cin, wejscie);
 
 		stringstream myStream(wejscie);

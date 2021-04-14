@@ -35,8 +35,7 @@ public:
 	void wyswietlWszystkichAdesatow();
 	bool czyUzytkownikJestZalogowany();
 	void usunAdresata();
-	//char wybierzOpcjeZMenuGlownego();
-	//char wybierzOpcjeZMenuUzytkownika();
+	void edytujAdresata();	
 };
 
 #endif

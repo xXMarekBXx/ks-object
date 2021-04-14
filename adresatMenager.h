@@ -25,6 +25,8 @@ class AdresatMenager {
 	void wyswietlDaneAdresata(Adresat adresat);
 	int podajIdWybranegoAdresata();
 	int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
+	char wybierzOpcjeZMenuEdycja();
+	void zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata);
 	
 public:
 	AdresatMenager(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -34,7 +36,8 @@ public:
 	};
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
-	int usunAdresata();//vector <Adresat> &adresaci
+	int usunAdresata();
+	void edytujAdresata();
 	int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata);
 };
 

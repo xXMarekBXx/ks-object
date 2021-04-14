@@ -22,8 +22,7 @@ class PlikZAdresatami {
 
 	vector <Adresat> adresaci;
 	Adresat adresat;
-
-	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+		
 	bool czyPlikJestPusty(fstream &plikTekstowy);
 	string pobierzLiczbe(string tekst, int pozycjaZnaku);	
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
@@ -35,14 +34,16 @@ public:
 	PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
 		idOstatniegoAdresata = 0;
 	};
-	static int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-	static int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	bool dopiszAdresataDoPliku(Adresat adresat);
 	string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 	vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 	int pobierzIdOstatniegoAdresata();
-	static void usunWybranaLinieWPliku(int numerUsuwanejLinii);
-	static int pobierzZPlikuIdOstatniegoAdresata();
+	void usunWybranaLinieWPliku(int numerUsuwanejLinii);
+	int pobierzZPlikuIdOstatniegoAdresata();
+	void edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami);
 };
 
 #endif
