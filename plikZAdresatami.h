@@ -8,6 +8,7 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#include <cstdio>
 #include "adresat.h"
 #include "metodyPomocnicze.h"
 
@@ -16,6 +17,7 @@ using namespace std;
 class PlikZAdresatami {
 
 	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
 	int idOstatniegoAdresata;
 
 	vector <Adresat> adresaci;
@@ -25,17 +27,22 @@ class PlikZAdresatami {
 	bool czyPlikJestPusty(fstream &plikTekstowy);
 	string pobierzLiczbe(string tekst, int pozycjaZnaku);	
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+	
+	void usunPlik(string nazwaPlikuZRozszerzeniem);
+	void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 
 public:
 	PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
 		idOstatniegoAdresata = 0;
 	};
+	static int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+	static int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	bool dopiszAdresataDoPliku(Adresat adresat);
 	string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 	vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 	int pobierzIdOstatniegoAdresata();
+	static void usunWybranaLinieWPliku(int numerUsuwanejLinii);
+	static int pobierzZPlikuIdOstatniegoAdresata();
 };
 
 #endif

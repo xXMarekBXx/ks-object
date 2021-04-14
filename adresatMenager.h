@@ -17,9 +17,14 @@ class AdresatMenager {
 	const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
 	vector <Adresat> adresaci;
 	PlikZAdresatami plikZAdresatami;
+
+	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
 		
 	Adresat podajDaneNowegoAdresata();
 	void wyswietlDaneAdresata(Adresat adresat);
+	int podajIdWybranegoAdresata();
+	int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
 	
 public:
 	AdresatMenager(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -29,6 +34,8 @@ public:
 	};
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
+	int usunAdresata();//vector <Adresat> &adresaci
+	int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata);
 };
 
 #endif

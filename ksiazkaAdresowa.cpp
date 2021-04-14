@@ -60,3 +60,8 @@ bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
 		return false;
 
 }
+
+void KsiazkaAdresowa::usunAdresata()
+{
+	adresatMenager->usunAdresata();
+}

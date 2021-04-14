@@ -72,7 +72,7 @@ int main() {
 				ksiazkaAdresowa.wyswietlWszystkichAdesatow();
 				break;
 			case 5:
-				//ksiazkaAdresowa.usunAdresata();
+				ksiazkaAdresowa.usunAdresata();
 				break;
 			case 6:
 				//ksiazkaAdresowa.edytujAdresata();
