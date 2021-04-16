@@ -37,14 +37,12 @@ Adresat AdresatMenager::podajDaneNowegoAdresata() {
 
 	string numerTelefonu;
 	cout << "Podaj numer telefonu: ";
-	numerTelefonu = MetodyPomocnicze::wczytajLinie();
-	numerTelefonu = plikZAdresatami.zamienPierwszaLitereNaDuzaAPozostaleNaMale(numerTelefonu);
+	numerTelefonu = MetodyPomocnicze::wczytajLinie();	
 	adresat.ustawNumerTelefonu(numerTelefonu);
 
 	string email;
 	cout << "Podaj email: ";
-	email = MetodyPomocnicze::wczytajLinie();
-	email = plikZAdresatami.zamienPierwszaLitereNaDuzaAPozostaleNaMale(email);
+	email = MetodyPomocnicze::wczytajLinie();	
 	adresat.ustawEmail(email);
 
 	string adres;
@@ -106,10 +104,10 @@ int AdresatMenager::usunAdresata()
 			cout << endl << "Potwierdz naciskajac klawisz 't': ";
 			znak = MetodyPomocnicze::wczytajZnak();
 			if (znak == 't')
-			{
-				numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
+			{	
+				numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);				
 				plikZAdresatami.usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
-				adresaci.erase(itr);
+				adresaci.erase(itr);				
 				cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
 				system("pause");
 				return idUsuwanegoAdresata;
@@ -117,7 +115,7 @@ int AdresatMenager::usunAdresata()
 			else
 			{
 				cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
-				system("p       ause");
+				system("pause");
 				return 0;
 			}
 		}

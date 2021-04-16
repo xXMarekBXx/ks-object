@@ -18,8 +18,7 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 }
 
 string MetodyPomocnicze::wczytajLinie()
-{
-	cin.ignore();
+{	
 	string wejscie = "";
 	getline(cin, wejscie);
 	return wejscie;
