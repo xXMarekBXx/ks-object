@@ -1,10 +1,12 @@
 #include "PlikZAdresatami.h"
 
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
-{
+{	
 	if (remove(nazwaPlikuZRozszerzeniem.c_str())) {} // == 0 (przeczuwam tutaj problem)
 	else
 		cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
+		
+	//remove(nazwaPlikuZRozszerzeniem.c_str());
 }
 
 void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa)
@@ -194,7 +196,7 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
-	if (odczytywanyPlikTekstowy.good() == true && numerUsuwanejLinii != 0)
+	if (odczytywanyPlikTekstowy.good() == true)
 	{
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
 		{
@@ -214,7 +216,7 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
 		odczytywanyPlikTekstowy.close();
 		tymczasowyPlikTekstowy.close();
 
-		usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+		usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);		
 		zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI);
 	}
 }

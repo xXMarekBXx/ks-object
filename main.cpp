@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int _main() {
 
 	vector <Adresat> adresaci;
 	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
@@ -86,4 +86,15 @@ int main() {
 			}
 		}
 	}	
+}
+
+
+#include "ksiazkaAdresowa.h"
+
+int main() {		
+
+	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "adresaci-test.txt");
+	ksiazkaAdresowa.logowanieUzytkownika();
+		
+	ksiazkaAdresowa.usunAdresata();
 }
