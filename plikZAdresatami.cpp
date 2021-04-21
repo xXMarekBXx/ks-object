@@ -1,12 +1,22 @@
 #include "PlikZAdresatami.h"
 
+/*
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
-{	
+{
 	if (remove(nazwaPlikuZRozszerzeniem.c_str())) {} // == 0 (przeczuwam tutaj problem)
 	else
 		cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
-		
+
 	//remove(nazwaPlikuZRozszerzeniem.c_str());
+}
+*/
+
+void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
+{
+	if (remove(nazwaPlikuZRozszerzeniem.c_str()))
+		cout << "Plik "<< nazwaPlikuZRozszerzeniem <<" usuniety" << endl;
+	else
+		cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;	
 }
 
 void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa)
@@ -226,17 +236,15 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsunietegoAdresata) {
 	string wczytanaLinia = "";
 	int numerWczytanejLinii = 1;
 	int idAdresataPobranegoZPliku = 0;
-
+	
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
-
-	if (odczytywanyPlikTekstowy.good() == true) {
-		while (getline(odczytywanyPlikTekstowy, wczytanaLinia)) {
-			idAdresataPobranegoZPliku = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);
-			if (idUsunietegoAdresata == idAdresataPobranegoZPliku)
-			{
-				// tutaj na pewno musi byæ puste?
-			}
+			
+	if (odczytywanyPlikTekstowy.good() == true) {	
+		
+		while (getline(odczytywanyPlikTekstowy, wczytanaLinia)) {			
+			idAdresataPobranegoZPliku = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);			
+			if (idUsunietegoAdresata == idAdresataPobranegoZPliku) {}			
 			else if (numerWczytanejLinii == 1 && idUsunietegoAdresata != 1)
 				tymczasowyPlikTekstowy << wczytanaLinia;
 			else if (numerWczytanejLinii == 2 && idUsunietegoAdresata == 1)
@@ -251,11 +259,12 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsunietegoAdresata) {
 			numerWczytanejLinii++;
 		}
 	}
+	
 	odczytywanyPlikTekstowy.close();
 	tymczasowyPlikTekstowy.close();
 
 	usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
-	zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI);
+	zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI);	
 }
 
 int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()

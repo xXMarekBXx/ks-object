@@ -94,7 +94,6 @@ int _main() {
 int main() {		
 
 	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "adresaci-test.txt");
-	ksiazkaAdresowa.logowanieUzytkownika();
-		
+	ksiazkaAdresowa.logowanieUzytkownika();		
 	ksiazkaAdresowa.usunAdresata();
 }
