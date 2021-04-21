@@ -44,6 +44,7 @@ public:
 	void usunWybranaLinieWPliku(int numerUsuwanejLinii);
 	int pobierzZPlikuIdOstatniegoAdresata();
 	void edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami);
+	void usunWybranegoAdresataZPliku(int idUsunietegoAdresata);
 };
 
 #endif
