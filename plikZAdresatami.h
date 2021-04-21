@@ -17,7 +17,7 @@ using namespace std;
 class PlikZAdresatami {
 
 	const string NAZWA_PLIKU_Z_ADRESATAMI;
-	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
+	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI = "tymczasowy.txt";
 	int idOstatniegoAdresata;
 
 	vector <Adresat> adresaci;

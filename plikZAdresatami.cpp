@@ -1,16 +1,5 @@
 #include "PlikZAdresatami.h"
 
-/*
-void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
-{
-	if (remove(nazwaPlikuZRozszerzeniem.c_str())) {} // == 0 (przeczuwam tutaj problem)
-	else
-		cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
-
-	//remove(nazwaPlikuZRozszerzeniem.c_str());
-}
-*/
-
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
 {
 	if (remove(nazwaPlikuZRozszerzeniem.c_str()))
@@ -21,9 +10,10 @@ void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
 
 void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa)
 {
-	if (rename(staraNazwa.c_str(), nowaNazwa.c_str())) {}//==0 (przeczuwam tutaj problem)
-	else
-		cout << "Nazwa pliku nie zostala zmieniona." << staraNazwa << endl;
+	if (rename(staraNazwa.c_str(), nowaNazwa.c_str()))
+		cout << "Nazwa pliku " << staraNazwa << " zostala zmieniona na "<< nowaNazwa << endl;
+	elsez
+		cout << "Nazwa pliku " << staraNazwa << " nie zostala zmieniona."  << endl;
 }
 
 string PlikZAdresatami::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)

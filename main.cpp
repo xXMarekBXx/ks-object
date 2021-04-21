@@ -88,7 +88,6 @@ int _main() {
 	}	
 }
 
-
 #include "ksiazkaAdresowa.h"
 
 int main() {		
