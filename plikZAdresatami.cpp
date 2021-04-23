@@ -2,17 +2,31 @@
 
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
 {
+	bool czyUdaloSieUsunacPlik = false;
+
 	if (remove(nazwaPlikuZRozszerzeniem.c_str()))
-		cout << "Plik "<< nazwaPlikuZRozszerzeniem <<" usuniety" << endl;
+	{
+		czyUdaloSieUsunacPlik = true;
+	}
+
+	if (czyUdaloSieUsunacPlik = true)
+		cout << endl << "Plik " << nazwaPlikuZRozszerzeniem << " zostal usuniety" << endl;
 	else
-		cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;	
+		cout << endl << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
 }
 
 void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa)
 {
+	bool czyUdaloSieZmienicNazwePliku = false;
+
 	if (rename(staraNazwa.c_str(), nowaNazwa.c_str()))
-		cout << "Nazwa pliku " << staraNazwa << " zostala zmieniona na "<< nowaNazwa << endl;
-	elsez
+	{
+		czyUdaloSieZmienicNazwePliku = true;
+	}
+
+	if (czyUdaloSieZmienicNazwePliku = true)	
+		cout << "Nazwa pliku " << staraNazwa << " zostala zmieniona na " << nowaNazwa << endl;	
+	else
 		cout << "Nazwa pliku " << staraNazwa << " nie zostala zmieniona."  << endl;
 }
 
@@ -195,7 +209,7 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
 
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
-
+		
 	if (odczytywanyPlikTekstowy.good() == true)
 	{
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
@@ -229,11 +243,12 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsunietegoAdresata) {
 	
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
-			
+		
 	if (odczytywanyPlikTekstowy.good() == true) {	
 		
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia)) {			
-			idAdresataPobranegoZPliku = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);			
+			idAdresataPobranegoZPliku = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia);
+			
 			if (idUsunietegoAdresata == idAdresataPobranegoZPliku) {}			
 			else if (numerWczytanejLinii == 1 && idUsunietegoAdresata != 1)
 				tymczasowyPlikTekstowy << wczytanaLinia;
@@ -290,12 +305,20 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
+	cout << "Wchodze do ifa" << endl;
+	system("Pause");
 	if (odczytywanyPlikTekstowy.good() == true)
 	{
+		cout << "Wchodze do while" << endl;
+		system("Pause");
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
 		{
+			cout << "Wchodze do ifa" << endl;
+			system("Pause");
 			if (numerWczytanejLinii == numerEdytowanejLinii)
 			{
+				cout << "Wchodze do ifa w pliku" << endl;
+				system("Pause");
 				if (numerWczytanejLinii == 1)
 					tymczasowyPlikTekstowy << liniaZDanymiAdresataOddzielonePionowymiKreskami;
 				else if (numerWczytanejLinii > 1)

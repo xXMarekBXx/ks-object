@@ -105,10 +105,10 @@ int AdresatMenager::usunAdresata()
 			znak = MetodyPomocnicze::wczytajZnak();
 			if (znak == 't')
 			{	
-				numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);				
-				plikZAdresatami.usunWybranegoAdresataZPliku(numerLiniiUsuwanegoAdresata);// by³o -> plikZAdresatami.usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
+				//numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);				
+				plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
 				adresaci.erase(itr);				
-				cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
+				cout << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
 				system("pause");
 				return idUsuwanegoAdresata;
 			}
