@@ -6,11 +6,10 @@ void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
 
 	if (remove(nazwaPlikuZRozszerzeniem.c_str()))
 	{
-		czyUdaloSieUsunacPlik = true;
+		czyUdaloSieUsunacPlik = true;		
 	}
-
 	if (czyUdaloSieUsunacPlik = true)
-		cout << endl << "Plik " << nazwaPlikuZRozszerzeniem << " zostal usuniety" << endl;
+		cout << czyUdaloSieUsunacPlik << endl;			
 	else
 		cout << endl << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
 }
