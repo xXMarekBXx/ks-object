@@ -92,10 +92,11 @@ int main() {
 /*
 #include "ksiazkaAdresowa.h"
 
-int main() {		
+int _main() {		
 
 	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "adresaci-test.txt");
-	ksiazkaAdresowa.logowanieUzytkownika();		
+	ksiazkaAdresowa.logowanieUzytkownika();
+	//ksiazkaAdresowa.edytujAdresata();
 	ksiazkaAdresowa.usunAdresata();
 }
 */

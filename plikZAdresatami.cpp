@@ -9,9 +9,9 @@ void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
 		czyUdaloSieUsunacPlik = true;		
 	}
 	if (czyUdaloSieUsunacPlik = true)
-		cout << czyUdaloSieUsunacPlik << endl;			
+		cout << endl << "Plik " << nazwaPlikuZRozszerzeniem << " zostal usuniety" << endl;
 	else
-		cout << endl << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
+		cout << endl << "Nie udalo sie usunac pliku" << nazwaPlikuZRozszerzeniem << endl;
 }
 
 void PlikZAdresatami::zmienNazwePliku(string staraNazwa, string nowaNazwa)
@@ -200,6 +200,11 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata()
 	return idOstatniegoAdresata;
 }
 
+void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
+{	
+	idOstatniegoAdresata = noweIdOstatniegoAdresata;
+}
+
 void PlikZAdresatami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
 {
 	fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
@@ -325,6 +330,8 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 			}
 			else
 			{
+				cout << "Wchodze do elsea w pliku" << endl;
+				system("Pause");
 				if (numerWczytanejLinii == 1)
 					tymczasowyPlikTekstowy << wczytanaLinia;
 				else if (numerWczytanejLinii > 1)
@@ -338,4 +345,12 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 		usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
 		zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI);
 	}
+}
+
+int PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata)
+{
+	if (idUsuwanegoAdresata == idOstatniegoAdresata)
+		return pobierzZPlikuIdOstatniegoAdresata();
+	else
+		return idOstatniegoAdresata;
 }

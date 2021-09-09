@@ -34,6 +34,7 @@ public:
 	PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
 		idOstatniegoAdresata = 0;
 	};
+	
 	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
@@ -45,6 +46,8 @@ public:
 	int pobierzZPlikuIdOstatniegoAdresata();
 	void edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami);
 	void usunWybranegoAdresataZPliku(int idUsunietegoAdresata);
+	int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata);
+	void ustawIdOstatniegoAdresata(int noweId);
 };
 
 #endif
