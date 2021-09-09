@@ -141,30 +141,40 @@ int AdresatMenager::podajIdWybranegoAdresata()
 int AdresatMenager::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
 {
 	bool czyIstniejeAdresat = false;
-	int numerLiniiWPlikuTekstowym = 1;
+	int numerLiniiWPlikuTekstowym = 1;	
 	string daneJednegoAdresataOddzielonePionowymiKreskami = "";
-	fstream plikTekstowy;
+	fstream plikTekstowy;	
 	plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
-	if (plikTekstowy.good() == true && idAdresata != 0)
+	cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
+	if (plikTekstowy.good())
 	{
+		cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 		while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
 		{
+			cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 			if (idAdresata == plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
 			{
+				cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 				czyIstniejeAdresat = true;
 				plikTekstowy.close();
 				return numerLiniiWPlikuTekstowym;
+				cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 			}
 			else
 				numerLiniiWPlikuTekstowym++;
 		}
+
 		if (czyIstniejeAdresat = false)
 		{
 			plikTekstowy.close();
 			return 0;
 		}
+
 	}
+	else
+		cout << "Plik nie istnieje" << endl;
+
 	return 0;
 }
 
@@ -173,11 +183,12 @@ void AdresatMenager::edytujAdresata()
 	system("cls");
 	Adresat adresat;
 	int idEdytowanegoAdresata = 0;
+	cout << "idEdytowanegoAdresata: " << idEdytowanegoAdresata << endl;
 	int numerLiniiEdytowanegoAdresata = 0;
 	string liniaZDanymiAdresata = "";
 
-	cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
-	idEdytowanegoAdresata = podajIdWybranegoAdresata();
+	cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;	
+	idEdytowanegoAdresata = podajIdWybranegoAdresata();	
 
 	char wybor;
 	bool czyIstniejeAdresat = false;
@@ -257,7 +268,7 @@ char AdresatMenager::wybierzOpcjeZMenuEdycja()
 
 void AdresatMenager::zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata)
 {
-	int numerLiniiEdytowanegoAdresata = 0;
+	int numerLiniiEdytowanegoAdresata = 0;	
 	string liniaZDanymiAdresata = "";
 
 	numerLiniiEdytowanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idEdytowanegoAdresata);

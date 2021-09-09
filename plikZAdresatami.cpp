@@ -306,23 +306,22 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 	string wczytanaLinia = "";
 	int numerWczytanejLinii = 1;
 
+	cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
+
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
-	cout << "Wchodze do ifa" << endl;
-	system("Pause");
+	cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
+		
 	if (odczytywanyPlikTekstowy.good() == true)
 	{
-		cout << "Wchodze do while" << endl;
-		system("Pause");
+		cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
 		{
-			cout << "Wchodze do ifa" << endl;
-			system("Pause");
+			cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
 			if (numerWczytanejLinii == numerEdytowanejLinii)
 			{
-				cout << "Wchodze do ifa w pliku" << endl;
-				system("Pause");
+				cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
 				if (numerWczytanejLinii == 1)
 					tymczasowyPlikTekstowy << liniaZDanymiAdresataOddzielonePionowymiKreskami;
 				else if (numerWczytanejLinii > 1)
@@ -330,8 +329,6 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 			}
 			else
 			{
-				cout << "Wchodze do elsea w pliku" << endl;
-				system("Pause");
 				if (numerWczytanejLinii == 1)
 					tymczasowyPlikTekstowy << wczytanaLinia;
 				else if (numerWczytanejLinii > 1)
