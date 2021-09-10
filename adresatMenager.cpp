@@ -145,21 +145,16 @@ int AdresatMenager::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
 	string daneJednegoAdresataOddzielonePionowymiKreskami = "";
 	fstream plikTekstowy;	
 	plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
-
-	cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
+	
 	if (plikTekstowy.good())
 	{
-		cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 		while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
 		{
-			cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 			if (idAdresata == plikZAdresatami.pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
 			{
-				cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
 				czyIstniejeAdresat = true;
 				plikTekstowy.close();
-				return numerLiniiWPlikuTekstowym;
-				cout << "numerLiniiWPlikuTekstowym: " << numerLiniiWPlikuTekstowym << endl;
+				return numerLiniiWPlikuTekstowym;				
 			}
 			else
 				numerLiniiWPlikuTekstowym++;

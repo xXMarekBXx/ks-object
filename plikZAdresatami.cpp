@@ -305,23 +305,16 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
 	fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
 	string wczytanaLinia = "";
 	int numerWczytanejLinii = 1;
-
-	cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
-
+	
 	odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 	tymczasowyPlikTekstowy.open(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
-
-	cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
 		
 	if (odczytywanyPlikTekstowy.good() == true)
-	{
-		cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
+	{		
 		while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
-		{
-			cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
+		{			
 			if (numerWczytanejLinii == numerEdytowanejLinii)
 			{
-				cout << "Numer wczytanej linii: " << numerWczytanejLinii << ", Numer edytowanej linii: " << numerEdytowanejLinii << endl;
 				if (numerWczytanejLinii == 1)
 					tymczasowyPlikTekstowy << liniaZDanymiAdresataOddzielonePionowymiKreskami;
 				else if (numerWczytanejLinii > 1)

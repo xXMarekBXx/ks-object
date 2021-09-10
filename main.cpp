@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int _main() {
+int main() {
 
 	vector <Adresat> adresaci;
 	KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
@@ -88,7 +88,7 @@ int _main() {
 	}	
 }
 
-
+/*
 #include "ksiazkaAdresowa.h"
 
 int main() {		
@@ -98,3 +98,4 @@ int main() {
 	ksiazkaAdresowa.edytujAdresata();
 
 }
+*/

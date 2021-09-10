@@ -18,7 +18,7 @@ class AdresatMenager {
 	vector <Adresat> adresaci;
 	PlikZAdresatami plikZAdresatami;
 
-	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	const string NAZWA_PLIKU_Z_ADRESATAMI = "Adresaci.txt";
 	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
 		
 	Adresat podajDaneNowegoAdresata();
