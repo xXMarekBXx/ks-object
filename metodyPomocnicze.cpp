@@ -20,6 +20,7 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 string MetodyPomocnicze::wczytajLinie()
 {	
 	string wejscie = "";
+	cin.ignore();
 	getline(cin, wejscie);
 	return wejscie;
 }

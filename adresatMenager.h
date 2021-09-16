@@ -34,10 +34,14 @@ public:
 	{
 		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 	};
+	int iloscAdresatow = 0;
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
 	int usunAdresata();
-	void edytujAdresata();	
+	void edytujAdresata();
+	void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+	void wyszukajAdresatowPoImieniu();
+	void wyszukajAdresatowPoNazwisku();
 };
 
 #endif
