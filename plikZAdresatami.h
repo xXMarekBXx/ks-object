@@ -11,19 +11,20 @@
 #include <cstdio>
 #include "adresat.h"
 #include "metodyPomocnicze.h"
+#include "plikTekstowy.h"
 
 using namespace std;
 
-class PlikZAdresatami {
+class PlikZAdresatami : public PlikTekstowy {
 
-	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	//const string NAZWA_PLIKU_Z_ADRESATAMI;
 	const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI = "tymczasowy.txt";
 	int idOstatniegoAdresata;
 
 	vector <Adresat> adresaci;
 	Adresat adresat;
 		
-	bool czyPlikJestPusty(fstream &plikTekstowy);
+	//bool czyPlikJestPusty(fstream &plikTekstowy);
 	string pobierzLiczbe(string tekst, int pozycjaZnaku);	
 	Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 	
@@ -31,10 +32,15 @@ class PlikZAdresatami {
 	void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 
 public:
+	PlikZAdresatami(string nazwaPliku) : PlikTekstowy(nazwaPliku) {
+		idOstatniegoAdresata = 0;
+	};
+	/*
+public:
 	PlikZAdresatami(string nazwaPlikuZAdresatami) : NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
 		idOstatniegoAdresata = 0;
 	};
-	
+	*/
 	string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
 	int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 	int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);

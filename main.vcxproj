@@ -156,6 +156,7 @@
     <ClCompile Include="ksiazkaAdresowa.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="metodyPomocnicze.cpp" />
+    <ClCompile Include="plikTekstowy.cpp" />
     <ClCompile Include="plikZAdresatami.cpp" />
     <ClCompile Include="plikZUzytkownikami.cpp" />
     <ClCompile Include="uzytkownik.cpp" />
@@ -166,10 +167,14 @@
     <ClInclude Include="adresatMenager.h" />
     <ClInclude Include="ksiazkaAdresowa.h" />
     <ClInclude Include="metodyPomocnicze.h" />
+    <ClInclude Include="plikTekstowy.h" />
     <ClInclude Include="plikZAdresatami.h" />
     <ClInclude Include="plikZUzytkownikami.h" />
     <ClInclude Include="uzytkownik.h" />
     <ClInclude Include="uzytkownikMenager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Uzytkownicy.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

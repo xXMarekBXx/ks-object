@@ -27,14 +27,15 @@ class AdresatMenager {
 	int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
 	char wybierzOpcjeZMenuEdycja();
 	void zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata);
+	int iloscAdresatow;
 	
 public:	
 	AdresatMenager(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
 		: plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
 	{
-		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);		
 	};
-	int iloscAdresatow = 0;
+	
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
 	int usunAdresata();

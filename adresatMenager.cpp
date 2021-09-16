@@ -292,6 +292,7 @@ void AdresatMenager::wyszukajAdresatowPoImieniu()
 		cout << ">>> WYSZUKIWANIE ADRESATOW PO IMIENIU <<<" << endl << endl;
 
 		cout << "Wyszukaj adresatow po imieniu: ";
+		cin.ignore();
 		imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
 		imiePoszukiwanegoAdresata = plikZAdresatami.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);		
 
@@ -304,6 +305,7 @@ void AdresatMenager::wyszukajAdresatowPoImieniu()
 			}
 		}
 		wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+		iloscAdresatow = 0;
 	}
 	else
 	{
@@ -323,6 +325,7 @@ void AdresatMenager::wyszukajAdresatowPoNazwisku()
 		cout << ">>> WYSZUKIWANIE ADRESATOW PO NAZWISKU <<<" << endl << endl;
 
 		cout << "Wyszukaj adresatow po nazwisku: ";
+		cin.ignore();
 		nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
 		nazwiskoPoszukiwanegoAdresata = plikZAdresatami.zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
 
@@ -335,6 +338,7 @@ void AdresatMenager::wyszukajAdresatowPoNazwisku()
 			}
 		}
 		wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+		iloscAdresatow = 0;
 	}
 	else
 	{
